@@ -1,9 +1,40 @@
 /* Raider.io /api/v1/characters/profile response types */
 
+/* 0 Poor · 1 Common · 2 Uncommon · 3 Rare · 4 Epic · 5 Legendary */
+export type GearItem = {
+  item_id: number;
+  item_level: number;
+  icon: string;
+  name: string;
+  item_quality: number;
+  is_legendary: boolean;
+  is_azerite_armor: boolean;
+};
+
+export type GearSlots = {
+  head?: GearItem;
+  neck?: GearItem;
+  shoulder?: GearItem;
+  back?: GearItem;
+  chest?: GearItem;
+  wrist?: GearItem;
+  hands?: GearItem;
+  waist?: GearItem;
+  legs?: GearItem;
+  feet?: GearItem;
+  finger1?: GearItem;
+  finger2?: GearItem;
+  trinket1?: GearItem;
+  trinket2?: GearItem;
+  mainhand?: GearItem;
+  offhand?: GearItem;
+};
+
 export type CharacterGear = {
   item_level_equipped: number;
   item_level_total: number;
   artifact_traits: number;
+  items: GearSlots;
 };
 
 /* A single raid tier's kill progress across all difficulties */
