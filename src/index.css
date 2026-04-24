@@ -50,6 +50,7 @@
     /* Custom palette tokens */
     --color-surface: var(--surface);
     --color-surface-elevated: var(--surface-elevated);
+    --color-surface-alt: var(--surface-alt);
     --color-primary-hover: var(--primary-hover);
     --color-primary-active: var(--primary-active);
     --color-secondary-hover: var(--secondary-hover);
@@ -69,38 +70,55 @@
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
+    /* shadcn base vars — mapped to arcane-codex palette */
+    --background: #F8FAFC;
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    --primary: #6D28D9;
+    --primary-foreground: #FFFFFF;
+    --secondary: #2563EB;
+    --secondary-foreground: #FFFFFF;
+    --muted: #F1F5F9;
+    --muted-foreground: #64748B;
+    --accent: #F1F5F9;
+    --accent-foreground: #0F172A;
+    --destructive: #DC2626;
+    --border: rgba(0, 0, 0, 0.08);
+    --input: rgba(0, 0, 0, 0.06);
+    --ring: #6D28D9;
     --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar: #FFFFFF;
+    --sidebar-foreground: #0F172A;
+    --sidebar-primary: #6D28D9;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #F1F5F9;
+    --sidebar-accent-foreground: #0F172A;
+    --sidebar-border: rgba(0, 0, 0, 0.08);
+    --sidebar-ring: #6D28D9;
+
+    /* Custom palette tokens */
+    --surface: #FFFFFF;
+    --surface-elevated: #F1F5F9;
+    --surface-alt: #F1F5F9;
+    --primary-hover: #8B5CF6;
+    --primary-active: #4C1D95;
+    --secondary-hover: #3B82F6;
+    --secondary-active: #1E40AF;
+    --accent-green: #16A34A;
+    --accent-green-soft: #22C55E;
+    --accent-gold: #CA8A04;
+    --accent-gold-soft: #EAB308;
+    --danger: #DC2626;
+    --danger-dark: #991B1B;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --glow-purple: transparent;
+    --glow-blue: transparent;
+    --glow-gold: transparent;
 }
 
 .dark {
@@ -135,6 +153,7 @@
     /* Custom palette tokens */
     --surface: #121621;
     --surface-elevated: #1A2030;
+    --surface-alt: #1A2030;
     --primary-hover: #A78BFA;
     --primary-active: #5B21B6;
     --secondary-hover: #60A5FA;

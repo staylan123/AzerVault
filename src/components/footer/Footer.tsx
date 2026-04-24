@@ -2,7 +2,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="w-full border-t border-white/[0.06] bg-[#0B0D12]/80 px-6 py-6">
+    <footer className="w-full border-t border-border bg-background/80 px-6 py-6">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-sm text-text-muted sm:flex-row">
         <span>© {year} AzerVault</span>
         <a

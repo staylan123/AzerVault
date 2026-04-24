@@ -7,7 +7,7 @@ const CharacterHeader = ({ profile }: Props) => (
     <img
       src={profile.thumbnail_url}
       alt={profile.name}
-      className="h-20 w-20 rounded-xl border border-white/[0.08] object-cover"
+      className="h-20 w-20 rounded-xl border border-border object-cover"
     />
     <div>
       <h1 className="text-3xl font-bold text-text-primary">{profile.name}</h1>

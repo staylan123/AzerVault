@@ -10,7 +10,7 @@ const REGIONS = ["us", "eu", "kr", "tw", "cn"] as const
 type Region = (typeof REGIONS)[number]
 
 const inputClass =
-  "h-11 w-full rounded-lg border border-white/[0.08] bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/60 focus:outline-none transition-colors disabled:opacity-40"
+  "h-11 w-full rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted focus:border-primary/60 focus:outline-none transition-colors disabled:opacity-40"
 
 const CharacterSearch = () => {
   const [region, setRegion] = useState<Region>("us")
