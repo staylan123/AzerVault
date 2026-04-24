@@ -13,6 +13,7 @@ const FIELDS = [
   "previous_mythic_plus_ranks",
   "mythic_plus_recent_runs",
   "mythic_plus_best_runs",
+  "mythic_plus_alternate_runs",
 ].join(",")
 
 /* Fetches a full character profile from raider.io.

@@ -34,14 +34,14 @@ const RunRow = ({ run }: { run: MythicPlusRun }) => (
   </div>
 )
 
-type Props = { runs: MythicPlusRun[] }
+type Props = { runs: MythicPlusRun[]; title?: string }
 
-const RecentRuns = ({ runs }: Props) => {
+const RecentRuns = ({ runs, title = "Recent Runs" }: Props) => {
   if (!runs?.length) return null
 
   return (
     <div>
-      <h2 className="mb-3 text-xs uppercase tracking-widest text-text-muted">Recent Runs</h2>
+      <h2 className="mb-3 text-xs uppercase tracking-widest text-text-muted">{title}</h2>
       <div className="flex flex-col gap-2">
         {runs.slice(0, 8).map(run => (
           <RunRow key={run.keystone_run_id} run={run} />

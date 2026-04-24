@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
 import CharacterHeader from "./components/CharacterHeader"
 import StatCards from "./components/StatCards"
+import ScoreBreakdown from "./components/ScoreBreakdown"
 import GearGrid from "./components/GearGrid"
 import RaidProgression from "./components/RaidProgression"
 import RecentRuns from "./components/RecentRuns"
@@ -20,9 +21,14 @@ const CharacterView = ({ profile }: { profile: CharacterProfile }) => (
   >
     <CharacterHeader profile={profile} />
     <StatCards profile={profile} />
+    {profile.mythic_plus_scores_by_season?.[0] && (
+      <ScoreBreakdown seasonScore={profile.mythic_plus_scores_by_season[0]} />
+    )}
     <GearGrid items={profile.gear.items} />
     <RaidProgression raidProgression={profile.raid_progression} />
+    <RecentRuns title="Best Runs" runs={profile.mythic_plus_best_runs} />
     <RecentRuns runs={profile.mythic_plus_recent_runs} />
+    <RecentRuns title="Alternate Runs" runs={profile.mythic_plus_alternate_runs} />
   </motion.div>
 )
 
