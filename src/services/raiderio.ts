@@ -2,6 +2,7 @@
 
 import type { CharacterProfile } from "@/types/raiderio/character"
 import type { AffixesResponse } from "@/types/raiderio/affixes"
+import type { GuildProfile } from "@/types/raiderio/guild"
 
 const BASE = "https://raider.io/api/v1"
 
@@ -32,6 +33,27 @@ export const fetchAffixes = async (
     throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
   }
   return res.json() as Promise<AffixesResponse>
+}
+
+export const fetchGuildProfile = async (
+  region: string,
+  realm: string,
+  name: string,
+  fields: string[],
+): Promise<GuildProfile> => {
+  const params = new URLSearchParams({
+    region,
+    realm,
+    name,
+    fields: fields.join(","),
+  })
+  const url = `${BASE}/guilds/profile?${params}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
+  }
+  return res.json() as Promise<GuildProfile>
 }
 
 export const fetchCharacterProfile = async (

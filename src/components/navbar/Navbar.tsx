@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
-import { Sun, Moon } from "lucide-react"
-import { SiLionair } from "react-icons/si"
-import { useTheme } from "@/context/ThemeContext"
+import { Link } from "react-router-dom";
+import { Sun, Moon } from "lucide-react";
+import { SiLionair } from "react-icons/si";
+import { useTheme } from "@/context/ThemeContext";
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b border-border bg-background/70 px-6 py-3 backdrop-blur-md">
@@ -23,6 +23,12 @@ const Navbar = () => {
           Character Lookup
         </Link>
         <Link
+          to="/guild"
+          className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+        >
+          Guild Lookup
+        </Link>
+        <Link
           to="/affixes"
           className="text-sm text-text-secondary transition-colors hover:text-text-primary"
         >
@@ -38,7 +44,7 @@ const Navbar = () => {
         {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
       </button>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

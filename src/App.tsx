@@ -3,6 +3,8 @@ import Home from "@/pages/home/Home"
 import CharacterSearch from "@/pages/character/CharacterSearch"
 import CharacterPage from "@/pages/character/CharacterPage"
 import AffixesPage from "@/pages/affixes/AffixesPage"
+import GuildSearch from "@/pages/guild/GuildSearch"
+import GuildPage from "@/pages/guild/GuildPage"
 
 const App = () => (
   <Routes>
@@ -10,6 +12,8 @@ const App = () => (
     <Route path="/character" element={<CharacterSearch />} />
     <Route path="/character/:region/:realm/:name" element={<CharacterPage />} />
     <Route path="/affixes" element={<AffixesPage />} />
+    <Route path="/guild" element={<GuildSearch />} />
+    <Route path="/guild/:region/:realm/:name" element={<GuildPage />} />
   </Routes>
 )
 
