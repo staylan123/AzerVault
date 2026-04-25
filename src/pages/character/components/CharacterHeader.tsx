@@ -1,8 +1,8 @@
 import type { CharacterProfile } from "@/types/raiderio/character"
 
-type Props = { profile: CharacterProfile }
+type CharacterHeaderProps = { profile: CharacterProfile }
 
-const CharacterHeader = ({ profile }: Props) => (
+const CharacterHeader = ({ profile }: CharacterHeaderProps) => (
   <div className="flex items-center gap-6">
     <img
       src={profile.thumbnail_url}

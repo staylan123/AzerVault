@@ -1,8 +1,8 @@
 import type { RaidProgression as RaidProgressionType } from "@/types/raiderio/character"
 
-type Props = { raidProgression: RaidProgressionType }
+type RaidProgressionProps = { raidProgression: RaidProgressionType }
 
-const RaidProgression = ({ raidProgression }: Props) => {
+const RaidProgression = ({ raidProgression }: RaidProgressionProps) => {
   const active = Object.entries(raidProgression).filter(
     ([, r]) => r.normal_bosses_killed + r.heroic_bosses_killed + r.mythic_bosses_killed > 0,
   )

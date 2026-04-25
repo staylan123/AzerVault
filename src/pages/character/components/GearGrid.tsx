@@ -54,9 +54,9 @@ const GearTile = ({ slot, item }: { slot: string; item: GearItem }) => {
   )
 }
 
-type Props = { items: GearSlots }
+type GearGridProps = { items: GearSlots }
 
-const GearGrid = ({ items }: Props) => {
+const GearGrid = ({ items }: GearGridProps) => {
   const slots = Object.keys(SLOT_LABELS) as (keyof GearSlots)[]
   const filled = slots.filter(slot => items[slot])
 

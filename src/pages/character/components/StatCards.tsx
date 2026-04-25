@@ -1,8 +1,8 @@
 import type { CharacterProfile } from "@/types/raiderio/character"
 
-type Props = { profile: CharacterProfile }
+type StatCardsProps = { profile: CharacterProfile }
 
-const StatCards = ({ profile }: Props) => {
+const StatCards = ({ profile }: StatCardsProps) => {
   const mpScore = profile.mythic_plus_scores_by_season?.[0]?.scores.all ?? 0
 
   const stats = [

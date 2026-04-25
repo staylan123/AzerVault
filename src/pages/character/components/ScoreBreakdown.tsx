@@ -1,6 +1,6 @@
 import type { MythicPlusSeasonScore } from "@/types/raiderio/character"
 
-type Props = { seasonScore: MythicPlusSeasonScore }
+type ScoreBreakdownProps = { seasonScore: MythicPlusSeasonScore }
 
 const ROLES = [
   { key: "dps", label: "DPS" },
@@ -8,7 +8,7 @@ const ROLES = [
   { key: "tank", label: "Tank" },
 ] as const
 
-const ScoreBreakdown = ({ seasonScore }: Props) => {
+const ScoreBreakdown = ({ seasonScore }: ScoreBreakdownProps) => {
   const active = ROLES.filter(
     ({ key }) => seasonScore.scores[key] > 0,
   )

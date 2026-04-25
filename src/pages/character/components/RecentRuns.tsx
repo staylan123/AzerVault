@@ -34,9 +34,9 @@ const RunRow = ({ run }: { run: MythicPlusRun }) => (
   </div>
 )
 
-type Props = { runs: MythicPlusRun[]; title?: string }
+type RecentRunsProps = { runs: MythicPlusRun[]; title?: string }
 
-const RecentRuns = ({ runs, title = "Recent Runs" }: Props) => {
+const RecentRuns = ({ runs, title = "Recent Runs" }: RecentRunsProps) => {
   if (!runs?.length) return null
 
   return (
