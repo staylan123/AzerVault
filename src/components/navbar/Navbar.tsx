@@ -22,6 +22,12 @@ const Navbar = () => {
         >
           Character Lookup
         </Link>
+        <Link
+          to="/affixes"
+          className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+        >
+          Affixes
+        </Link>
       </div>
 
       <button
