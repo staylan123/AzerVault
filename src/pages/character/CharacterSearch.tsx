@@ -93,7 +93,7 @@ const CharacterSearch = () => {
             <button
               type="submit"
               disabled={!realm || !name.trim()}
-              className="mt-2 h-11 rounded-lg bg-primary text-sm font-semibold text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
+              className="mt-2 h-11 rounded-lg bg-primary text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
             >
               Search
             </button>

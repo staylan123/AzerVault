@@ -62,7 +62,7 @@ const AffixesPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="h-11 rounded-lg bg-primary px-6 text-sm font-semibold text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
+            className="h-11 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
             {loading ? "Loading…" : "Search"}
           </button>
