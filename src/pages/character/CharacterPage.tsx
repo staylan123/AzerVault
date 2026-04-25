@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useCharacterProfile } from "@/hooks/useCharacterProfile"
 import type { CharacterProfile } from "@/types/raiderio/character"
@@ -19,6 +19,12 @@ const CharacterView = ({ profile }: { profile: CharacterProfile }) => (
     transition={{ duration: 0.5, ease: "easeOut" }}
     className="flex flex-col gap-8"
   >
+    <Link
+      to="/character"
+      className="flex w-fit items-center gap-1.5 text-sm text-text-muted transition-colors hover:text-text-primary"
+    >
+      <span>&#8592;</span> Character Search
+    </Link>
     <CharacterHeader profile={profile} />
     <StatCards profile={profile} />
     {profile.mythic_plus_scores_by_season?.[0] && (
