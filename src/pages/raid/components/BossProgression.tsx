@@ -32,6 +32,9 @@ const BossProgression = ({ bossKills }: Props) => {
               </span>
             </div>
 
+            {bk.defeatedBy.guilds.length === 0 ? (
+              <p className="text-sm text-text-muted">No results found.</p>
+            ) : (
             <div className="overflow-x-auto rounded-xl border border-border">
               <table className="w-full text-sm">
                 <thead>
@@ -92,6 +95,7 @@ const BossProgression = ({ bossKills }: Props) => {
                 </tbody>
               </table>
             </div>
+            )}
           </div>
         )
       })}
