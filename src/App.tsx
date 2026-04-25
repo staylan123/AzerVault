@@ -5,6 +5,7 @@ import CharacterPage from "@/pages/character/CharacterPage"
 import AffixesPage from "@/pages/affixes/AffixesPage"
 import GuildSearch from "@/pages/guild/GuildSearch"
 import GuildPage from "@/pages/guild/GuildPage"
+import About from "@/pages/about/About"
 
 const App = () => (
   <Routes>
@@ -14,6 +15,7 @@ const App = () => (
     <Route path="/affixes" element={<AffixesPage />} />
     <Route path="/guild" element={<GuildSearch />} />
     <Route path="/guild/:region/:realm/:name" element={<GuildPage />} />
+    <Route path="/about" element={<About />} />
   </Routes>
 )
 
