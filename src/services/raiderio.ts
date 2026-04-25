@@ -3,6 +3,7 @@
 import type { CharacterProfile } from "@/types/raiderio/character"
 import type { AffixesResponse } from "@/types/raiderio/affixes"
 import type { GuildProfile } from "@/types/raiderio/guild"
+import type { RaidStaticData, HallOfFameResponse } from "@/types/raiderio/raiding"
 
 const BASE = "https://raider.io/api/v1"
 
@@ -54,6 +55,33 @@ export const fetchGuildProfile = async (
     throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
   }
   return res.json() as Promise<GuildProfile>
+}
+
+export const fetchRaidStaticData = async (
+  expansionId: number,
+): Promise<RaidStaticData> => {
+  const url = `${BASE}/raiding/static-data?expansion_id=${expansionId}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
+  }
+  return res.json() as Promise<RaidStaticData>
+}
+
+export const fetchHallOfFame = async (
+  raid: string,
+  difficulty: string,
+  region: string,
+): Promise<HallOfFameResponse> => {
+  const params = new URLSearchParams({ raid, difficulty, region })
+  const url = `${BASE}/raiding/hall-of-fame?${params}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
+  }
+  return res.json() as Promise<HallOfFameResponse>
 }
 
 export const fetchCharacterProfile = async (

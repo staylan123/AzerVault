@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { to: "/character", label: "Character Lookup" },
   { to: "/guild", label: "Guild Lookup" },
   { to: "/affixes", label: "Affixes" },
+  { to: "/raid", label: "Raids" },
   { to: "/about", label: "About" },
 ]
 
