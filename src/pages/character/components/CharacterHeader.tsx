@@ -12,7 +12,7 @@ const CharacterHeader = ({ profile }: CharacterHeaderProps) => (
     <div>
       <h1 className="text-3xl font-bold text-text-primary">{profile.name}</h1>
       <p className="mt-1 text-text-secondary">
-        {profile.active_spec_name} {profile.class} &mdash; {profile.realm} ({profile.region.toUpperCase()})
+        {profile.active_spec_name} {profile.class} &mdash; {profile.active_spec_role} &mdash; {profile.realm} ({profile.region.toUpperCase()})
       </p>
       <p className="mt-0.5 text-sm capitalize text-text-muted">
         {profile.race} &middot; {profile.faction}

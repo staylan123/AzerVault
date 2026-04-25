@@ -10,6 +10,7 @@ const StatCards = ({ profile }: StatCardsProps) => {
     { label: "M+ Score", value: mpScore.toFixed(1) },
     { label: "World Rank", value: profile.mythic_plus_ranks.overall.world.toLocaleString() },
     { label: "Region Rank", value: profile.mythic_plus_ranks.overall.region.toLocaleString() },
+    { label: "Achievement Pts", value: profile.achievement_points.toLocaleString() },
   ]
 
   return (
