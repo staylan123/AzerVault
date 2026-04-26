@@ -8,6 +8,7 @@ import Footer from "@/components/footer/Footer"
 import CharacterHeader from "./components/CharacterHeader"
 import StatCards from "./components/StatCards"
 import ScoreBreakdown from "./components/ScoreBreakdown"
+import TalentBuild from "./components/TalentBuild"
 import GearGrid from "./components/GearGrid"
 import RaidProgression from "./components/RaidProgression"
 import RecentRuns from "./components/RecentRuns"
@@ -30,6 +31,7 @@ const CharacterView = ({ profile }: { profile: CharacterProfile }) => (
     {profile.mythic_plus_scores_by_season?.[0] && (
       <ScoreBreakdown seasonScore={profile.mythic_plus_scores_by_season[0]} />
     )}
+    {profile.talentLoadout && <TalentBuild loadout={profile.talentLoadout} />}
     <GearGrid items={profile.gear.items} />
     <RaidProgression raidProgression={profile.raid_progression} />
     <RecentRuns title="Best Runs" runs={profile.mythic_plus_best_runs} />

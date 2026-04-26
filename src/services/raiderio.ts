@@ -10,6 +10,8 @@ const BASE = "https://raider.io/api/v1"
 /* Fields requested on every character profile fetch */
 const FIELDS = [
   "gear",
+  "guild",
+  "talents:categorized",
   "raid_progression",
   "mythic_plus_scores_by_season",
   "mythic_plus_ranks",

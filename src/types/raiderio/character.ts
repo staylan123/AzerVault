@@ -1,5 +1,67 @@
 /* Raider.io /api/v1/characters/profile response types */
 
+export type GuildInfo = {
+  name: string;
+  realm: string;
+};
+
+export type TalentSpell = {
+  id: number;
+  name: string;
+  icon: string;
+  school: number;
+  rank: string | null;
+  hasCooldown: boolean;
+};
+
+export type TalentEntry = {
+  id: number;
+  traitDefinitionId: number;
+  traitSubTreeId: number;
+  type: number;
+  maxRanks: number;
+  spell: TalentSpell;
+};
+
+export type TalentNode = {
+  id: number;
+  treeId: number;
+  subTreeId: number;
+  type: number;
+  flags: number;
+  entries: TalentEntry[];
+  important: boolean;
+  posX: number;
+  posY: number;
+  row: number;
+  col: number;
+};
+
+export type TalentSelection = {
+  node: TalentNode;
+  entryIndex: number;
+  rank: number;
+  includeInSummary?: boolean;
+};
+
+export type ActiveHeroTree = {
+  id: number;
+  traitTreeId: number;
+  name: string;
+  slug: string;
+  description: string;
+  iconUrl: string;
+};
+
+export type TalentLoadout = {
+  loadout_spec_id: number;
+  loadout_text: string;
+  class_talents: TalentSelection[];
+  spec_talents: TalentSelection[];
+  hero_talents: TalentSelection[];
+  active_hero_tree: ActiveHeroTree;
+};
+
 /* 0 Poor · 1 Common · 2 Uncommon · 3 Rare · 4 Epic · 5 Legendary */
 export type GearItem = {
   item_id: number;
@@ -9,6 +71,10 @@ export type GearItem = {
   item_quality: number;
   is_legendary: boolean;
   is_azerite_armor: boolean;
+  enchants?: number[];
+  enchants_detail?: { name: string }[];
+  gems?: number[];
+  gems_detail?: { name: string }[];
 };
 
 export type GearSlots = {
@@ -161,6 +227,8 @@ export type CharacterProfile = {
   profile_url: string;
   profile_banner: string;
   use_animated_banner: boolean;
+  guild?: GuildInfo;
+  talentLoadout?: TalentLoadout;
   gear: CharacterGear;
   raid_progression: RaidProgression;
   mythic_plus_scores_by_season: MythicPlusSeasonScore[];

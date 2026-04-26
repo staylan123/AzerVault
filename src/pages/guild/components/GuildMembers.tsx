@@ -1,4 +1,5 @@
 import type { GuildMember } from "@/types/raiderio/guild"
+import { CLASS_COLORS, FACTION_COLORS } from "@/data/colors"
 
 type GuildMembersProps = { members: GuildMember[] }
 
@@ -15,9 +16,12 @@ const GuildMembers = ({ members }: GuildMembersProps) => {
 
   return (
     <div>
-      <h2 className="mb-3 text-xs uppercase tracking-widest text-text-muted">
-        Members ({members.length})
-      </h2>
+      <div className="mb-3 flex items-baseline gap-3">
+        <h2 className="text-xs uppercase tracking-widest text-text-muted">
+          Members ({members.length})
+        </h2>
+        <p className="text-xs text-text-muted">Only active members tracked by Raider.io are shown.</p>
+      </div>
       <div className="overflow-x-auto rounded-xl border border-border">
         <div className="max-h-[520px] overflow-y-auto">
           <table className="w-full text-sm">
@@ -50,12 +54,12 @@ const GuildMembers = ({ members }: GuildMembersProps) => {
                   <td className="px-4 py-2.5 text-text-secondary">
                     <span className="capitalize">{c.race}</span>
                     {" · "}
-                    <span>{c.class}</span>
-                    {" · "}
-                    <span>{c.active_spec_name}</span>
+                    <span style={{ color: CLASS_COLORS[c.class] }}>{c.active_spec_name} {c.class}</span>
                   </td>
                   <td className="px-4 py-2.5 capitalize text-text-secondary">{c.active_spec_role}</td>
-                  <td className="px-4 py-2.5 capitalize text-text-secondary">{c.faction}</td>
+                  <td className="px-4 py-2.5 capitalize">
+                    <span style={{ color: FACTION_COLORS[c.faction] }}>{c.faction}</span>
+                  </td>
                   <td className="px-4 py-2.5 text-right text-text-secondary">
                     {c.achievement_points.toLocaleString()}
                   </td>
