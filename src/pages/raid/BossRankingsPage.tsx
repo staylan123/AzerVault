@@ -3,30 +3,35 @@ import { useParams, useNavigate, Link } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
-import { REGIONS as BASE_REGIONS, EXPANSIONS } from "@/data/game"
-import { useHallOfFame } from "@/hooks/useHallOfFame"
+import { REGIONS, EXPANSIONS } from "@/data/game"
+import { useBossRankings } from "@/hooks/useBossRankings"
 import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
-import WinningGuilds from "./components/WinningGuilds"
-import BossProgression from "./components/BossProgression"
+import BossRankingsList from "./components/BossRankingsList"
 
 const DIFFICULTIES = ["mythic", "heroic", "normal"] as const
-const REGIONS = ["world", ...BASE_REGIONS] as const
 
 const inputClass =
   "h-11 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary focus:border-primary/60 focus:outline-none transition-colors disabled:opacity-40"
 
-const HallOfFamePage = () => {
-  const { expansionId: paramExpansion, raid: paramRaid, difficulty: paramDifficulty, region: paramRegion } = useParams()
+const BossRankingsPage = () => {
+  const {
+    expansionId: paramExpansion,
+    raid: paramRaid,
+    boss: paramBoss,
+    difficulty: paramDifficulty,
+    region: paramRegion,
+  } = useParams()
   const navigate = useNavigate()
 
   const [expansionId, setExpansionId] = useState(paramExpansion ? Number(paramExpansion) : 10)
   const [selectedRaid, setSelectedRaid] = useState(paramRaid ?? "")
+  const [selectedBoss, setSelectedBoss] = useState(paramBoss ?? "")
   const [difficulty, setDifficulty] = useState(paramDifficulty ?? "mythic")
-  const [region, setRegion] = useState(paramRegion ?? "world")
+  const [region, setRegion] = useState(paramRegion ?? "us")
 
   const { data: staticData, loading: staticLoading, error: staticError, getStaticData } = useRaidStaticData()
-  const { data: hofData, loading: hofLoading, error: hofError, getHallOfFame } = useHallOfFame()
+  const { data: rankingsData, loading: rankingsLoading, error: rankingsError, getBossRankings } = useBossRankings()
 
   useEffect(() => {
     getStaticData(expansionId)
@@ -39,20 +44,35 @@ const HallOfFamePage = () => {
   }, [staticData])
 
   useEffect(() => {
-    if (paramRaid && paramDifficulty && paramRegion) {
-      getHallOfFame(paramRaid, paramDifficulty, paramRegion)
+    const currentRaidData = staticData?.raids.find(r => r.slug === selectedRaid)
+    if (currentRaidData?.encounters.length && !paramBoss) {
+      setSelectedBoss(currentRaidData.encounters[0].slug)
+    } else if (!paramBoss) {
+      setSelectedBoss("")
+    }
+  }, [selectedRaid, staticData])
+
+  useEffect(() => {
+    if (paramRaid && paramBoss && paramDifficulty && paramRegion) {
+      getBossRankings(paramRaid, paramBoss, paramDifficulty, paramRegion)
     }
   }, [])
 
+  const handleRaidChange = (raid: string) => {
+    setSelectedRaid(raid)
+    setSelectedBoss("")
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (selectedRaid) {
-      navigate(`/raid/hall-of-fame/${expansionId}/${selectedRaid}/${difficulty}/${region}`)
-      getHallOfFame(selectedRaid, difficulty, region)
+    if (selectedRaid && selectedBoss) {
+      navigate(`/raid/boss-rankings/${expansionId}/${selectedRaid}/${selectedBoss}/${difficulty}/${region}`)
+      getBossRankings(selectedRaid, selectedBoss, difficulty, region)
     }
   }
 
   const currentRaid = staticData?.raids.find(r => r.slug === selectedRaid)
+  const currentBoss = currentRaid?.encounters.find(e => e.slug === selectedBoss)
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -73,7 +93,7 @@ const HallOfFamePage = () => {
             <select
               value={expansionId}
               onChange={e => setExpansionId(Number(e.target.value))}
-              disabled={hofLoading}
+              disabled={rankingsLoading}
               className={inputClass}
             >
               {EXPANSIONS.map(ex => (
@@ -86,8 +106,8 @@ const HallOfFamePage = () => {
             <label className="text-xs uppercase tracking-widest text-text-muted">Raid</label>
             <select
               value={selectedRaid}
-              onChange={e => setSelectedRaid(e.target.value)}
-              disabled={staticLoading || !staticData || hofLoading}
+              onChange={e => handleRaidChange(e.target.value)}
+              disabled={staticLoading || !staticData || rankingsLoading}
               className={inputClass}
             >
               {staticLoading && <option value="">Loading…</option>}
@@ -98,11 +118,26 @@ const HallOfFamePage = () => {
           </div>
 
           <div className="flex flex-col gap-1.5">
+            <label className="text-xs uppercase tracking-widest text-text-muted">Boss</label>
+            <select
+              value={selectedBoss}
+              onChange={e => setSelectedBoss(e.target.value)}
+              disabled={staticLoading || !currentRaid || rankingsLoading}
+              className={inputClass}
+            >
+              {!currentRaid && <option value="">Select a raid first</option>}
+              {currentRaid?.encounters.map(enc => (
+                <option key={enc.slug} value={enc.slug}>{enc.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
             <label className="text-xs uppercase tracking-widest text-text-muted">Difficulty</label>
             <select
               value={difficulty}
               onChange={e => setDifficulty(e.target.value)}
-              disabled={hofLoading}
+              disabled={rankingsLoading}
               className={inputClass}
             >
               {DIFFICULTIES.map(d => (
@@ -116,7 +151,7 @@ const HallOfFamePage = () => {
             <select
               value={region}
               onChange={e => setRegion(e.target.value)}
-              disabled={hofLoading}
+              disabled={rankingsLoading}
               className={inputClass}
             >
               {REGIONS.map(r => (
@@ -127,17 +162,17 @@ const HallOfFamePage = () => {
 
           <button
             type="submit"
-            disabled={hofLoading || !selectedRaid}
+            disabled={rankingsLoading || !selectedRaid || !selectedBoss}
             className="h-11 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
-            {hofLoading ? "Loading…" : "Search"}
+            {rankingsLoading ? "Loading…" : "Search"}
           </button>
         </form>
 
         {staticError && <p className="mt-6 text-sm text-danger">{staticError}</p>}
-        {hofError && <p className="mt-6 text-sm text-danger">{hofError}</p>}
+        {rankingsError && <p className="mt-6 text-sm text-danger">{rankingsError}</p>}
 
-        {hofData && (
+        {rankingsData && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,26 +180,16 @@ const HallOfFamePage = () => {
             className="mt-10 flex flex-col gap-4"
           >
             <div className="flex items-baseline gap-3">
-              <h2 className="text-lg font-semibold text-text-primary">Hall of Fame</h2>
+              <h2 className="text-lg font-semibold text-text-primary">Boss Rankings</h2>
               <span className="text-sm text-text-muted">
-                {currentRaid?.name} — {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+                {currentBoss?.name ?? selectedBoss} — {currentRaid?.name} — {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
               </span>
             </div>
 
-            {hofData.hallOfFame.winningGuilds.length === 0 ? (
+            {rankingsData.bossRankings.length === 0 ? (
               <p className="text-sm text-text-muted">No results found.</p>
             ) : (
-              <WinningGuilds
-                guilds={hofData.hallOfFame.winningGuilds}
-                totalBosses={currentRaid?.encounters.length ?? 0}
-              />
-            )}
-
-            {hofData.hallOfFame.bossKills.length > 0 && (
-              <div className="flex flex-col gap-4 mt-4">
-                <h2 className="text-lg font-semibold text-text-primary">Boss Progression</h2>
-                <BossProgression bossKills={hofData.hallOfFame.bossKills} />
-              </div>
+              <BossRankingsList rankings={rankingsData.bossRankings} />
             )}
           </motion.div>
         )}
@@ -175,4 +200,4 @@ const HallOfFamePage = () => {
   )
 }
 
-export default HallOfFamePage
+export default BossRankingsPage

@@ -3,7 +3,7 @@
 import type { CharacterProfile } from "@/types/raiderio/character"
 import type { AffixesResponse } from "@/types/raiderio/affixes"
 import type { GuildProfile } from "@/types/raiderio/guild"
-import type { RaidStaticData, HallOfFameResponse } from "@/types/raiderio/raiding"
+import type { RaidStaticData, HallOfFameResponse, BossRankingsResponse } from "@/types/raiderio/raiding"
 
 const BASE = "https://raider.io/api/v1"
 
@@ -84,6 +84,22 @@ export const fetchHallOfFame = async (
     throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
   }
   return res.json() as Promise<HallOfFameResponse>
+}
+
+export const fetchBossRankings = async (
+  raid: string,
+  boss: string,
+  difficulty: string,
+  region: string,
+): Promise<BossRankingsResponse> => {
+  const params = new URLSearchParams({ raid, boss, difficulty, region })
+  const url = `${BASE}/raiding/boss-rankings?${params}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
+  }
+  return res.json() as Promise<BossRankingsResponse>
 }
 
 export const fetchCharacterProfile = async (

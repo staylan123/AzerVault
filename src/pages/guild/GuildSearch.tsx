@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { SiLionair } from "react-icons/si"
 import { REALMS_BY_REGION } from "@/data/realms"
+import { REGIONS, type Region } from "@/data/game"
 import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
-
-const REGIONS = ["us", "eu", "kr", "tw"] as const
-type Region = (typeof REGIONS)[number]
 
 const ALL_FIELDS = [
   { id: "raid_progression", label: "Raid Progression" },

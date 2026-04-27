@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Trophy } from "lucide-react"
+import { Trophy, Swords } from "lucide-react"
 import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
 
@@ -9,6 +9,12 @@ const CARDS = [
     icon: Trophy,
     title: "Hall of Fame",
     description: "Browse world, region, and realm rankings for mythic raid clears.",
+  },
+  {
+    to: "/raid/boss-rankings",
+    icon: Swords,
+    title: "Boss Rankings",
+    description: "See which guilds rank highest for a specific boss kill.",
   },
 ]
 

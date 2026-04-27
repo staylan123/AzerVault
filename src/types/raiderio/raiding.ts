@@ -92,3 +92,23 @@ export type HallOfFameResponse = {
     bossKills: BossKill[]
   }
 }
+
+export type BossRankingRecruitment = {
+  activity_type: string
+  entity_type: string
+  recruitment_profile_id: number
+}
+
+export type BossRankingEntry = {
+  guild: HofGuild
+  rank: number
+  regionRank: number
+  encountersDefeated: EncounterDefeated[]
+  doesVideoExist: boolean
+  itemLevelAvg: number
+  recruitmentProfiles: BossRankingRecruitment[]
+}
+
+export type BossRankingsResponse = {
+  bossRankings: BossRankingEntry[]
+}

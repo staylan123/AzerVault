@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { SiLionair } from "react-icons/si"
 import { REALMS_BY_REGION } from "@/data/realms"
+import { REGIONS as BASE_REGIONS } from "@/data/game"
 import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
 
-const REGIONS = ["us", "eu", "kr", "tw", "cn"] as const
+const REGIONS = [...BASE_REGIONS, "cn"] as const
 type Region = (typeof REGIONS)[number]
 
 const inputClass =

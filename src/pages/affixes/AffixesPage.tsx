@@ -5,8 +5,8 @@ import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
 import AffixList from "./components/AffixList"
 import AffixRecentRun from "./components/AffixRecentRun"
+import { REGIONS } from "@/data/game"
 
-const REGIONS = ["us", "eu", "kr", "tw"] as const
 const LOCALES = ["en", "ru", "ko", "cn", "pt", "it", "fr", "es", "de", "tw"] as const
 
 const inputClass =
