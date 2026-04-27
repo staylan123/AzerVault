@@ -137,6 +137,15 @@ const HallOfFamePage = () => {
         {staticError && <p className="mt-6 text-sm text-danger">{staticError}</p>}
         {hofError && <p className="mt-6 text-sm text-danger">{hofError}</p>}
 
+        {!hofData && !hofLoading && !hofError && (
+          <div className="mt-10 rounded-xl border border-border bg-surface p-6 flex flex-col gap-4">
+            <p className="text-xs uppercase tracking-widest text-text-muted">About this page</p>
+            <p className="text-sm text-text-muted leading-relaxed">
+              Hall of Fame tracks the guilds that have fully cleared a raid on a given difficulty. Select an expansion, raid, difficulty, and region, then hit Search to see the ranked list of clearing guilds alongside a per-boss breakdown of which guilds defeated each encounter first.
+            </p>
+          </div>
+        )}
+
         {hofData && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

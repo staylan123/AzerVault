@@ -172,6 +172,15 @@ const BossRankingsPage = () => {
         {staticError && <p className="mt-6 text-sm text-danger">{staticError}</p>}
         {rankingsError && <p className="mt-6 text-sm text-danger">{rankingsError}</p>}
 
+        {!rankingsData && !rankingsLoading && !rankingsError && (
+          <div className="mt-10 rounded-xl border border-border bg-surface p-6 flex flex-col gap-4">
+            <p className="text-xs uppercase tracking-widest text-text-muted">About this page</p>
+            <p className="text-sm text-text-muted leading-relaxed">
+              Boss Rankings shows which guilds achieved the fastest kills on a specific boss. Select an expansion, raid, and boss, then choose a difficulty and region to see the ranked list with each guild's world and regional standing.
+            </p>
+          </div>
+        )}
+
         {rankingsData && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
