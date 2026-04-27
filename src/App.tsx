@@ -9,6 +9,7 @@ import About from "@/pages/about/About"
 import RaidPage from "@/pages/raid/RaidPage"
 import HallOfFamePage from "@/pages/raid/HallOfFamePage"
 import BossRankingsPage from "@/pages/raid/BossRankingsPage"
+import RaidRankingsPage from "@/pages/raid/RaidRankingsPage"
 
 const App = () => (
   <Routes>
@@ -23,6 +24,8 @@ const App = () => (
     <Route path="/raid/hall-of-fame/:expansionId/:raid/:difficulty/:region" element={<HallOfFamePage />} />
     <Route path="/raid/boss-rankings" element={<BossRankingsPage />} />
     <Route path="/raid/boss-rankings/:expansionId/:raid/:boss/:difficulty/:region" element={<BossRankingsPage />} />
+    <Route path="/raid/raid-rankings" element={<RaidRankingsPage />} />
+    <Route path="/raid/raid-rankings/:expansionId/:raid/:difficulty/:region" element={<RaidRankingsPage />} />
     <Route path="/about" element={<About />} />
   </Routes>
 )

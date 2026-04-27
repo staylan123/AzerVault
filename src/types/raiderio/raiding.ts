@@ -112,3 +112,35 @@ export type BossRankingEntry = {
 export type BossRankingsResponse = {
   bossRankings: BossRankingEntry[]
 }
+
+export type EncounterPulled = {
+  id: number
+  slug: string
+  isDefeated: boolean
+  numPulls: number
+  pullStartedAt: string
+  bestPercent: number
+}
+
+export type GuildPrivacy = {
+  raidPulls: boolean
+  raidPercents: boolean
+  raidComps: boolean
+  wereRaidPullsRestricted: boolean
+  wereRaidPercentsRestricted: boolean
+  wereRaidCompsRestricted: boolean
+  shareRaidUntil: string
+}
+
+export type RaidRankingEntry = {
+  guild: HofGuild
+  rank: number
+  regionRank: number
+  encountersPulled: EncounterPulled[]
+  encountersDefeated: EncounterDefeated[]
+  guildPrivacy: GuildPrivacy
+}
+
+export type RaidRankingsResponse = {
+  raidRankings: RaidRankingEntry[]
+}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Trophy, Swords } from "lucide-react"
+import { Trophy, Swords, BarChart2 } from "lucide-react"
 import Navbar from "@/components/navbar/Navbar"
 import Footer from "@/components/footer/Footer"
 
@@ -15,6 +15,12 @@ const CARDS = [
     icon: Swords,
     title: "Boss Rankings",
     description: "See which guilds rank highest for a specific boss kill.",
+  },
+  {
+    to: "/raid/raid-rankings",
+    icon: BarChart2,
+    title: "Raid Rankings",
+    description: "Compare guild standings across an entire raid tier by difficulty and region.",
   },
 ]
 
