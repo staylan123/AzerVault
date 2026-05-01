@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { LuTrophy, LuSwords, LuBarChart2 } from "react-icons/lu"
+import { LuTrophy, LuSwords, LuChartBar } from "react-icons/lu"
 
 const CARDS = [
   {
@@ -16,7 +16,7 @@ const CARDS = [
   },
   {
     to: "/raid/raid-rankings",
-    icon: LuBarChart2,
+    icon: LuChartBar,
     title: "Raid Rankings",
     description: "Compare guild standings across an entire raid tier by difficulty and region.",
   },
