@@ -1,7 +1,6 @@
 import type { RosterMember } from "@/types/raiderio/mythic-plus"
 import { classColor, factionColor, shortName, formatRole } from "@/utils/wow"
-
-const ROLE_ORDER = { tank: 0, healer: 1, dps: 2 } as const
+import { ROLE_ORDER } from "@/data/game"
 
 const sortRoster = (roster: RosterMember[]) =>
   [...roster].sort(

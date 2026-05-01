@@ -1,12 +1,7 @@
 import type { MythicPlusSeasonScore } from "@/types/raiderio/character"
+import { ROLES } from "@/data/game"
 
 type ScoreBreakdownProps = { seasonScore: MythicPlusSeasonScore }
-
-const ROLES = [
-  { key: "dps", label: "DPS" },
-  { key: "healer", label: "Healer" },
-  { key: "tank", label: "Tank" },
-] as const
 
 const ScoreBreakdown = ({ seasonScore }: ScoreBreakdownProps) => {
   const active = ROLES.filter(

@@ -5,9 +5,7 @@ import { motion } from "framer-motion"
 import { useAffixes } from "@/hooks/useAffixes"
 import AffixList from "./components/AffixList"
 import AffixRecentRun from "./components/AffixRecentRun"
-import { REGIONS } from "@/data/game"
-
-const LOCALES = ["en", "ru", "ko", "cn", "pt", "it", "fr", "es", "de", "tw"] as const
+import { REGIONS, LOCALES } from "@/data/game"
 
 const inputClass =
   "h-11 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary focus:border-primary/60 focus:outline-none transition-colors"

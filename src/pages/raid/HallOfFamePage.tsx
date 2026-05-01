@@ -3,12 +3,11 @@ import { useParams, useNavigate, Link } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
-import { REGIONS as BASE_REGIONS, EXPANSIONS } from "@/data/game"
+import { REGIONS as BASE_REGIONS, EXPANSIONS, DIFFICULTIES } from "@/data/game"
 import { useHallOfFame } from "@/hooks/useHallOfFame"
 import WinningGuilds from "./components/WinningGuilds"
 import BossProgression from "./components/BossProgression"
 
-const DIFFICULTIES = ["mythic", "heroic", "normal"] as const
 const REGIONS = ["world", ...BASE_REGIONS] as const
 
 const inputClass =

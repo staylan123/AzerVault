@@ -3,11 +3,9 @@ import { useParams, useNavigate, Link } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
-import { REGIONS, EXPANSIONS } from "@/data/game"
+import { REGIONS, EXPANSIONS, DIFFICULTIES } from "@/data/game"
 import { useBossRankings } from "@/hooks/useBossRankings"
 import BossRankingsList from "./components/BossRankingsList"
-
-const DIFFICULTIES = ["mythic", "heroic", "normal"] as const
 
 const inputClass =
   "h-11 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary focus:border-primary/60 focus:outline-none transition-colors disabled:opacity-40"

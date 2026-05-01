@@ -4,10 +4,8 @@ import { ChevronLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
 import { useRaidRankings } from "@/hooks/useRaidRankings"
-import { REGIONS, EXPANSIONS } from "@/data/game"
+import { REGIONS, EXPANSIONS, DIFFICULTIES } from "@/data/game"
 import RaidRankingsList from "./components/RaidRankingsList"
-
-const DIFFICULTIES = ["mythic", "heroic", "normal"] as const
 
 const inputClass =
   "h-11 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary focus:border-primary/60 focus:outline-none transition-colors disabled:opacity-40"
