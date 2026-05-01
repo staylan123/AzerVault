@@ -1,6 +1,6 @@
+import { QUALITY_COLORS } from "@/data/colors";
 import type { GearSlots, GearItem } from "@/types/raiderio/character"
-
-const ICON_BASE = "https://cdn.raiderio.net/images/wow/icons/medium"
+import { wowIconUrl } from "@/utils/wow"
 
 const SLOT_LABELS: Record<keyof GearSlots, string> = {
   head: "Head",
@@ -21,17 +21,6 @@ const SLOT_LABELS: Record<keyof GearSlots, string> = {
   offhand: "Off Hand",
 }
 
-/* WoW item quality border colours */
-const QUALITY_COLORS: Record<number, string> = {
-  0: "#9D9D9D",
-  1: "#FFFFFF",
-  2: "#1EFF00",
-  3: "#0070DD",
-  4: "#A335EE",
-  5: "#FF8000",
-  6: "#E6CC80",
-}
-
 const GearTile = ({ slot, item }: { slot: string; item: GearItem }) => {
   const borderColor = QUALITY_COLORS[item.item_quality] ?? QUALITY_COLORS[1]
   const enchants = item.enchants_detail?.filter(e => e.name) ?? []
@@ -43,7 +32,7 @@ const GearTile = ({ slot, item }: { slot: string; item: GearItem }) => {
       style={{ borderLeft: `3px solid ${borderColor}` }}
     >
       <img
-        src={`${ICON_BASE}/${item.icon}.jpg`}
+        src={wowIconUrl(item.icon)}
         alt={item.name}
         className="h-10 w-10 shrink-0 rounded"
       />

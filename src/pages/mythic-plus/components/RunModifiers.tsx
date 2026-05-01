@@ -1,11 +1,9 @@
 import type { RunModifier } from "@/types/raiderio/mythic-plus"
+import { wowIconUrl } from "@/utils/wow"
 
 type RunModifiersProps = {
   modifiers: RunModifier[]
 }
-
-const iconUrl = (icon: string) =>
-  `https://wow.zamimg.com/images/wow/icons/medium/${icon}.jpg`
 
 const RunModifiers = ({ modifiers }: RunModifiersProps) => {
   if (!modifiers.length) return null
@@ -15,7 +13,7 @@ const RunModifiers = ({ modifiers }: RunModifiersProps) => {
       {modifiers.map(m => (
         <div key={m.id} className="flex items-center gap-1.5">
           <img
-            src={iconUrl(m.icon)}
+            src={wowIconUrl(m.icon)}
             alt={m.name}
             className="h-5 w-5 shrink-0 rounded"
           />

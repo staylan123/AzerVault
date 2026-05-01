@@ -1,5 +1,9 @@
 import { CLASS_COLORS, FACTION_COLORS } from "@/data/colors"
 
+const ICON_BASE = "https://cdn.raiderio.net/images/wow/icons/medium"
+
+export const wowIconUrl = (icon: string): string => `${ICON_BASE}/${icon}.jpg`
+
 export const classColor = (className: string): string =>
   CLASS_COLORS[className] ?? "inherit"
 

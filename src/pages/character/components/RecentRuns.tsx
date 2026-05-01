@@ -1,10 +1,5 @@
 import type { MythicPlusRun } from "@/types/raiderio/character"
-
-const formatTime = (ms: number) => {
-  const m = Math.floor(ms / 60000)
-  const s = Math.floor((ms % 60000) / 1000)
-  return `${m}:${s.toString().padStart(2, "0")}`
-}
+import { formatTime } from "@/utils/time"
 
 const RunRow = ({ run }: { run: MythicPlusRun }) => (
   <div className="flex items-center justify-between rounded-lg bg-surface px-4 py-3 text-sm">

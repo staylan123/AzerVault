@@ -18,3 +18,13 @@ export const FACTION_COLORS: Record<string, string> = {
   alliance: "#0078FF",
   horde:    "#B30000",
 }
+
+export const QUALITY_COLORS: Record<number, string> = {
+  0: "#9D9D9D",
+  1: "#FFFFFF",
+  2: "#1EFF00",
+  3: "#0070DD",
+  4: "#A335EE",
+  5: "#FF8000",
+  6: "#E6CC80",
+}

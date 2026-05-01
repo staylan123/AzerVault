@@ -1,6 +1,6 @@
 import type { BossRankingEntry } from "@/types/raiderio/raiding"
 
-interface Props {
+type Props = {
   rankings: BossRankingEntry[]
 }
 

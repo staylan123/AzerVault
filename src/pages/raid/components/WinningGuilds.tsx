@@ -1,6 +1,6 @@
 import type { WinningGuild } from "@/types/raiderio/raiding"
 
-interface Props {
+type Props = {
   guilds: WinningGuild[]
   totalBosses: number
 }

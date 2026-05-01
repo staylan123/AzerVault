@@ -1,12 +1,10 @@
 import { Play } from "lucide-react"
 import type { BossKill } from "@/types/raiderio/raiding"
+import { formatDate } from "@/utils/date"
 
-interface Props {
+type Props = {
   bossKills: BossKill[]
 }
-
-const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
 
 const getYoutubeUrl = (bossKillVideo: BossKill["bossKillVideo"]) => {
   const entry = bossKillVideo?.find(v => v.type === "youtube")

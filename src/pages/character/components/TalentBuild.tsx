@@ -1,6 +1,5 @@
 import type { TalentLoadout } from "@/types/raiderio/character"
-
-const ICON_BASE = "https://cdn.raiderio.net/images/wow/icons/medium"
+import { wowIconUrl } from "@/utils/wow"
 
 type TalentBuildProps = { loadout: TalentLoadout }
 
@@ -36,7 +35,7 @@ const TalentBuild = ({ loadout }: TalentBuildProps) => {
                   className="flex items-center gap-1.5 rounded-lg bg-background px-2 py-1.5"
                 >
                   <img
-                    src={`${ICON_BASE}/${entry.spell.icon}.jpg`}
+                    src={wowIconUrl(entry.spell.icon)}
                     alt={entry.spell.name}
                     className="h-5 w-5 shrink-0 rounded"
                   />
