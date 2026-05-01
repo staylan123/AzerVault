@@ -39,6 +39,7 @@ export type RosterMember = {
     spec: { id: number; name: string; slug: string; role: string }
     realm: { name: string; slug: string }
     region: { name: string; short_name: string; slug: string }
+    faction: string
   }
   role: string
 }

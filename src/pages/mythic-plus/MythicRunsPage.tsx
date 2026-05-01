@@ -64,6 +64,12 @@ const MythicRunsPage = () => {
     getRuns(season, region, dungeon, 0)
   }
 
+  const handleExpansionChange = (id: number) => {
+    setSeason("")
+    setDungeon("")
+    setExpansionId(id)
+  }
+
   const handlePageChange = (newPage: number) => {
     setPage(newPage)
     navigate(`/mythic-plus/runs/${expansionId}/${season}/${dungeon}/${region}/${newPage + 1}`)
@@ -89,7 +95,7 @@ const MythicRunsPage = () => {
           <label className="text-xs uppercase tracking-widest text-text-muted">Expansion</label>
           <select
             value={expansionId}
-            onChange={e => { setSeason(""); setDungeon(""); setExpansionId(Number(e.target.value)) }}
+            onChange={e => handleExpansionChange(Number(e.target.value))}
             disabled={staticLoading || runsLoading}
             className={inputClass}
           >
