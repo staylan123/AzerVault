@@ -6,7 +6,7 @@ type TalentBuildProps = { loadout: TalentLoadout }
 const TalentBuild = ({ loadout }: TalentBuildProps) => {
   const { active_hero_tree, class_talents, spec_talents, hero_talents } = loadout
 
-  const summaryTalents = [...class_talents, ...spec_talents, ...hero_talents].filter(
+  const summaryTalents = [...class_talents, ...spec_talents, ...(hero_talents ?? [])].filter(
     t => t.includeInSummary,
   )
 
@@ -14,17 +14,19 @@ const TalentBuild = ({ loadout }: TalentBuildProps) => {
     <div>
       <h2 className="mb-3 text-xs uppercase tracking-widest text-text-muted">Talent Build</h2>
       <div className="rounded-xl bg-surface p-4">
-        <div className="mb-4 flex items-center gap-3">
-          <img
-            src={active_hero_tree.iconUrl}
-            alt={active_hero_tree.name}
-            className="h-10 w-10 shrink-0 rounded-lg"
-          />
-          <div>
-            <p className="font-semibold text-text-primary">{active_hero_tree.name}</p>
-            <p className="text-xs text-text-muted">{active_hero_tree.description}</p>
+        {active_hero_tree && (
+          <div className="mb-4 flex items-center gap-3">
+            <img
+              src={active_hero_tree.iconUrl}
+              alt={active_hero_tree.name}
+              className="h-10 w-10 shrink-0 rounded-lg"
+            />
+            <div>
+              <p className="font-semibold text-text-primary">{active_hero_tree.name}</p>
+              <p className="text-xs text-text-muted">{active_hero_tree.description}</p>
+            </div>
           </div>
-        </div>
+        )}
         {summaryTalents.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {summaryTalents.map(t => {

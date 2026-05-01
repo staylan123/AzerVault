@@ -58,8 +58,8 @@ export type TalentLoadout = {
   loadout_text: string;
   class_talents: TalentSelection[];
   spec_talents: TalentSelection[];
-  hero_talents: TalentSelection[];
-  active_hero_tree: ActiveHeroTree;
+  hero_talents?: TalentSelection[];
+  active_hero_tree?: ActiveHeroTree;
 };
 
 /* 0 Poor · 1 Common · 2 Uncommon · 3 Rare · 4 Epic · 5 Legendary */
