@@ -1,3 +1,10 @@
+export const formatDate = (iso: string): string =>
+  new Date(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  })
+
 export const formatRelativeTime = (iso: string): string => {
   const diff = Date.now() - new Date(iso).getTime()
   const minutes = Math.floor(diff / 60_000)
