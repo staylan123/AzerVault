@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
 import { useMythicPlusStaticData } from "@/hooks/useMythicPlusStaticData"
 import { useMythicPlusRuns } from "@/hooks/useMythicPlusRuns"
@@ -176,11 +176,22 @@ const MythicRunsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <div className="mt-10 mb-4 flex items-baseline gap-3">
-            <h2 className="text-lg font-semibold text-text-primary">Top Runs</h2>
-            <span className="text-sm text-text-muted">
-              {activeDungeonName} — {runsData.params.region.toUpperCase()} — Page {page + 1}
-            </span>
+          <div className="mt-10 mb-4 flex items-center justify-between gap-3">
+            <div className="flex items-baseline gap-3">
+              <h2 className="text-lg font-semibold text-text-primary">Top Runs</h2>
+              <span className="text-sm text-text-muted">
+                {activeDungeonName} — {runsData.params.region.toUpperCase()} — Page {page + 1}
+              </span>
+            </div>
+            <a
+              href={runsData.leaderboard_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-text-muted transition-colors hover:text-text-primary"
+            >
+              <ExternalLink size={12} />
+              Raider.io
+            </a>
           </div>
 
           {runsData.rankings.length === 0 ? (

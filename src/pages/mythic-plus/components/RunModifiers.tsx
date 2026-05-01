@@ -9,15 +9,18 @@ const RunModifiers = ({ modifiers }: RunModifiersProps) => {
   if (!modifiers.length) return null
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-col gap-2">
       {modifiers.map(m => (
-        <div key={m.id} className="flex items-center gap-1.5">
+        <div key={m.id} className="flex items-start gap-2.5 rounded-lg bg-background px-3 py-2">
           <img
             src={wowIconUrl(m.icon)}
             alt={m.name}
-            className="h-5 w-5 shrink-0 rounded"
+            className="h-8 w-8 shrink-0 rounded"
           />
-          <span className="text-xs text-text-muted">{m.name}</span>
+          <div>
+            <p className="text-xs font-medium text-text-primary">{m.name}</p>
+            <p className="text-xs text-text-muted leading-relaxed">{m.description}</p>
+          </div>
         </div>
       ))}
     </div>

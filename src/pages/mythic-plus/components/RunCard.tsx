@@ -38,8 +38,13 @@ const RunCard = ({ ranking }: RunCardProps) => {
       </button>
 
       {open && (
-        <div className="border-t border-border px-4 pb-4 pt-3 flex flex-col gap-3">
-          <RunModifiers modifiers={run.weekly_modifiers} />
+        <div className="border-t border-border px-4 pb-4 pt-3 flex flex-col gap-4">
+          {run.weekly_modifiers.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <p className="text-xs uppercase tracking-widest text-text-muted">Affixes</p>
+              <RunModifiers modifiers={run.weekly_modifiers} />
+            </div>
+          )}
           <RunRoster roster={run.roster} />
         </div>
       )}

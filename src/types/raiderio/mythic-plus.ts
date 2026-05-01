@@ -35,6 +35,7 @@ export type RosterMember = {
     id: number
     name: string
     path: string
+    level: number
     class: { id: number; name: string; slug: string }
     spec: { id: number; name: string; slug: string; role: string }
     realm: { name: string; slug: string }

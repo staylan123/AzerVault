@@ -17,33 +17,49 @@ const RunRoster = ({ roster }: RunRosterProps) => {
   const sorted = sortRoster(roster)
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="border-b border-border pb-1.5 text-xs uppercase tracking-wider text-text-muted">
-        <span>Player</span>
-      </div>
-
-      {sorted.map((member, i) => (
-        <div key={i} className="min-w-0">
-          <a
-            href={`https://raider.io${member.character.path}`}
-            target="_blank"
-            rel="noreferrer"
-            className="block truncate text-sm font-medium transition-opacity hover:opacity-80"
-            style={{ color: classColor(member.character.class.name) }}
-          >
-            {shortName(member.character.name)}
-          </a>
-          <p className="mt-0.5 text-xs text-text-muted">
-            {member.character.spec.name} {member.character.class.name}{" "}
-            ({formatRole(member.role)}){" · "}
-            <span style={{ color: factionColor(member.character.faction) }}>
-              {member.character.faction.charAt(0).toUpperCase() + member.character.faction.slice(1)}
-            </span>
-            {" · "}
-            {member.character.region.short_name.toUpperCase()}
-          </p>
-        </div>
-      ))}
+    <div className="overflow-x-auto rounded-lg border border-border">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-border bg-surface/60 text-xs uppercase tracking-widest text-text-muted">
+            <th className="px-4 py-2.5 text-left">Name</th>
+            <th className="px-4 py-2.5 text-left">Spec / Class / Role</th>
+            <th className="px-4 py-2.5 text-left">Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map((member, i) => {
+            const { character, role } = member
+            return (
+              <tr key={i} className="border-b border-border/50 last:border-0">
+                <td className="px-4 py-2.5">
+                  <a
+                    href={`https://raider.io${character.path}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block truncate font-medium transition-opacity hover:opacity-80"
+                    style={{ color: classColor(character.class.name) }}
+                  >
+                    {shortName(character.name)}
+                  </a>
+                  <p className="mt-0.5 text-xs text-text-muted">
+                    <span style={{ color: factionColor(character.faction) }}>
+                      {character.faction.charAt(0).toUpperCase() + character.faction.slice(1)}
+                    </span>
+                    {" · "}
+                    {character.region.short_name.toUpperCase()}
+                  </p>
+                </td>
+                <td className="px-4 py-2.5 text-text-secondary">
+                  {character.spec.name} {character.class.name} ({formatRole(role)})
+                </td>
+                <td className="px-4 py-2.5 text-text-secondary">
+                  {character.level}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }
