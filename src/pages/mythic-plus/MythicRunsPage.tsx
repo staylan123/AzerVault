@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useMythicPlusStaticData } from "@/hooks/useMythicPlusStaticData"
@@ -11,23 +11,32 @@ const inputClass =
   "h-11 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary focus:border-primary/60 focus:outline-none transition-colors disabled:opacity-40"
 
 const MythicRunsPage = () => {
-  const [expansionId, setExpansionId] = useState(10)
-  const [season, setSeason] = useState("")
-  const [dungeon, setDungeon] = useState("")
-  const [region, setRegion] = useState<string>("us")
-  const [page, setPage] = useState(0)
+  const {
+    expansionId: paramExpansion,
+    season: paramSeason,
+    dungeon: paramDungeon,
+    region: paramRegion,
+    page: paramPage,
+  } = useParams()
+  const navigate = useNavigate()
+
+  const [expansionId, setExpansionId] = useState(paramExpansion ? Number(paramExpansion) : 10)
+  const [season, setSeason] = useState(paramSeason ?? "")
+  const [dungeon, setDungeon] = useState(paramDungeon ?? "")
+  const [region, setRegion] = useState(paramRegion ?? "us")
+  const [page, setPage] = useState(paramPage ? Number(paramPage) - 1 : 0)
 
   const { data: staticData, loading: staticLoading, getStaticData } = useMythicPlusStaticData()
   const { data: runsData, loading: runsLoading, error: runsError, getRuns } = useMythicPlusRuns()
 
   useEffect(() => {
-    setSeason("")
-    setDungeon("")
+    setSeason(s => paramSeason ?? s)
+    setDungeon(d => paramDungeon ?? d)
     getStaticData(expansionId)
   }, [expansionId])
 
   useEffect(() => {
-    if (staticData?.seasons.length) {
+    if (staticData?.seasons.length && !paramSeason) {
       setSeason(staticData.seasons[0].slug)
     }
   }, [staticData])
@@ -36,20 +45,28 @@ const MythicRunsPage = () => {
     staticData?.seasons.find(s => s.slug === season)?.dungeons ?? []
 
   useEffect(() => {
-    if (currentSeasonDungeons.length) {
+    if (currentSeasonDungeons.length && !paramDungeon) {
       setDungeon(currentSeasonDungeons[0].slug)
     }
   }, [season, staticData])
+
+  useEffect(() => {
+    if (paramSeason && paramDungeon && paramRegion) {
+      getRuns(paramSeason, paramRegion, paramDungeon, paramPage ? Number(paramPage) - 1 : 0)
+    }
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!season || !dungeon) return
     setPage(0)
+    navigate(`/mythic-plus/runs/${expansionId}/${season}/${dungeon}/${region}/1`)
     getRuns(season, region, dungeon, 0)
   }
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage)
+    navigate(`/mythic-plus/runs/${expansionId}/${season}/${dungeon}/${region}/${newPage + 1}`)
     getRuns(season, region, dungeon, newPage)
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
@@ -72,7 +89,7 @@ const MythicRunsPage = () => {
           <label className="text-xs uppercase tracking-widest text-text-muted">Expansion</label>
           <select
             value={expansionId}
-            onChange={e => setExpansionId(Number(e.target.value))}
+            onChange={e => { setSeason(""); setDungeon(""); setExpansionId(Number(e.target.value)) }}
             disabled={staticLoading || runsLoading}
             className={inputClass}
           >

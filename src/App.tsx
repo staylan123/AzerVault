@@ -33,6 +33,7 @@ const App = () => (
       <Route path="/mythic-plus" element={<MythicPlusPage />} />
       <Route path="/mythic-plus/affixes" element={<AffixesPage />} />
       <Route path="/mythic-plus/runs" element={<MythicRunsPage />} />
+      <Route path="/mythic-plus/runs/:expansionId/:season/:dungeon/:region/:page" element={<MythicRunsPage />} />
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
