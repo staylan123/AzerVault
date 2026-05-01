@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { useAffixes } from "@/hooks/useAffixes"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 import AffixList from "./components/AffixList"
 import AffixRecentRun from "./components/AffixRecentRun"
 import { REGIONS } from "@/data/game"
@@ -29,10 +27,7 @@ const AffixesPage = () => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-
-      <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
         <Link
           to="/mythic-plus"
           className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
@@ -95,10 +90,7 @@ const AffixesPage = () => {
             {data.recent_run && <AffixRecentRun run={data.recent_run} />}
           </motion.div>
         )}
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }
 

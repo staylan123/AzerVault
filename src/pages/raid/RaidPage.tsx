@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 import { Trophy, Swords, BarChart2 } from "lucide-react"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 
 const CARDS = [
   {
@@ -25,10 +23,7 @@ const CARDS = [
 ]
 
 const RaidPage = () => (
-  <div className="flex min-h-screen flex-col bg-background">
-    <Navbar />
-
-    <main className="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-24">
+  <main className="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-24">
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-text-primary">Raiding</h1>
         <p className="mt-1 text-sm text-text-muted">Raid progression and rankings</p>
@@ -51,10 +46,7 @@ const RaidPage = () => (
           </Link>
         ))}
       </div>
-    </main>
-
-    <Footer />
-  </div>
+  </main>
 )
 
 export default RaidPage

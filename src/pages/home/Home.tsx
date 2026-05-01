@@ -3,17 +3,12 @@ import { SiLionair } from "react-icons/si"
 import bgDark from "@/assets/HomePageBackground.jpg"
 import bgLight from "@/assets/HomePageBackgroundLight.jpg"
 import { useTheme } from "@/context/ThemeContext"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 
 const Home = () => {
   const { theme } = useTheme()
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-
-      <div className="relative flex flex-1 items-center justify-center">
+    <div className="relative flex flex-1 items-center justify-center">
         <img
           src={theme === "dark" ? bgDark : bgLight}
           alt=""
@@ -36,9 +31,6 @@ const Home = () => {
           </p>
         </motion.div>
       </div>
-
-      <Footer />
-    </div>
   )
 }
 

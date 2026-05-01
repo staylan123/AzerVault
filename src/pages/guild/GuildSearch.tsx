@@ -4,8 +4,6 @@ import { motion } from "framer-motion"
 import { SiLionair } from "react-icons/si"
 import { REALMS_BY_REGION } from "@/data/realms"
 import { REGIONS, type Region } from "@/data/game"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 
 const ALL_FIELDS = [
   { id: "raid_progression", label: "Raid Progression" },
@@ -44,10 +42,7 @@ const GuildSearch = () => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-
-      <main className="flex flex-1 items-center justify-center px-4 pt-16">
+    <main className="flex flex-1 items-center justify-center px-4 pt-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,10 +123,7 @@ const GuildSearch = () => {
             </button>
           </form>
         </motion.div>
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }
 

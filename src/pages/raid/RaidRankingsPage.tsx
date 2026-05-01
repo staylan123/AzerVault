@@ -5,8 +5,6 @@ import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
 import { useRaidRankings } from "@/hooks/useRaidRankings"
 import { REGIONS, EXPANSIONS } from "@/data/game"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 import RaidRankingsList from "./components/RaidRankingsList"
 
 const DIFFICULTIES = ["mythic", "heroic", "normal"] as const
@@ -58,10 +56,7 @@ const RaidRankingsPage = () => {
   const currentRaid = staticData?.raids.find(r => r.slug === selectedRaid)
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-24">
+    <main className="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-24">
         <Link
           to="/raid"
           className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
@@ -173,10 +168,7 @@ const RaidRankingsPage = () => {
             )}
           </motion.div>
         )}
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }
 

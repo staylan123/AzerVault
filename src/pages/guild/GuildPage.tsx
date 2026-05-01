@@ -3,8 +3,6 @@ import { useParams, useSearchParams, Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useGuildProfile } from "@/hooks/useGuildProfile"
 import type { GuildProfile } from "@/types/raiderio/guild"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 import GuildHeader from "./components/GuildHeader"
 import GuildRaidProgression from "./components/GuildRaidProgression"
 import GuildRaidRankings from "./components/GuildRaidRankings"
@@ -49,9 +47,7 @@ const GuildPage = () => {
   }, [region, realm, name])
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-      <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
         {loading && (
           <div className="flex items-center justify-center py-32">
             <p className="text-sm text-text-muted">Looking up guild...</p>
@@ -63,9 +59,7 @@ const GuildPage = () => {
           </div>
         )}
         {profile && <GuildView profile={profile} />}
-      </main>
-      <Footer />
-    </div>
+    </main>
   )
 }
 

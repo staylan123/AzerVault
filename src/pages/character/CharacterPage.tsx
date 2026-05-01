@@ -3,8 +3,6 @@ import { useParams, Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useCharacterProfile } from "@/hooks/useCharacterProfile"
 import type { CharacterProfile } from "@/types/raiderio/character"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 import CharacterHeader from "./components/CharacterHeader"
 import StatCards from "./components/StatCards"
 import ScoreBreakdown from "./components/ScoreBreakdown"
@@ -49,9 +47,7 @@ const CharacterPage = () => {
   }, [region, realm, name])
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-      <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
         {loading && (
           <div className="flex items-center justify-center py-32">
             <p className="text-sm text-text-muted">Looking up character...</p>
@@ -63,9 +59,7 @@ const CharacterPage = () => {
           </div>
         )}
         {profile && <CharacterView profile={profile} />}
-      </main>
-      <Footer />
-    </div>
+    </main>
   )
 }
 

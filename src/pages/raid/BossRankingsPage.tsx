@@ -5,8 +5,6 @@ import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
 import { REGIONS, EXPANSIONS } from "@/data/game"
 import { useBossRankings } from "@/hooks/useBossRankings"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 import BossRankingsList from "./components/BossRankingsList"
 
 const DIFFICULTIES = ["mythic", "heroic", "normal"] as const
@@ -75,10 +73,7 @@ const BossRankingsPage = () => {
   const currentBoss = currentRaid?.encounters.find(e => e.slug === selectedBoss)
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <Navbar />
-
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-24">
+    <main className="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-24">
         <Link
           to="/raid"
           className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
@@ -202,10 +197,7 @@ const BossRankingsPage = () => {
             )}
           </motion.div>
         )}
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }
 

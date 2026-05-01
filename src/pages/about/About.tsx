@@ -1,8 +1,6 @@
 
 import { motion } from "framer-motion"
 import { SiReact, SiTypescript, SiTailwindcss, SiVite } from "react-icons/si"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/footer/Footer"
 
 const TECH = [
   { icon: SiReact, label: "React" },
@@ -30,10 +28,7 @@ const LINKS = [
 ]
 
 const About = () => (
-  <div className="flex min-h-screen flex-col bg-background">
-    <Navbar />
-
-    <main className="mx-auto w-full max-w-2xl flex-1 px-6 pb-16 pt-24">
+  <main className="mx-auto w-full max-w-2xl flex-1 px-6 pb-16 pt-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -97,10 +92,7 @@ const About = () => (
           </div>
         </section>
       </motion.div>
-    </main>
-
-    <Footer />
-  </div>
+  </main>
 )
 
 export default About
