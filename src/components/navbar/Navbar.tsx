@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Sun, Moon, Menu, X } from "lucide-react"
 import { SiLionair } from "react-icons/si"
+import { LuSun, LuMoon, LuMenu, LuX } from "react-icons/lu"
 import { useTheme } from "@/context/ThemeContext"
 
 const NAV_LINKS = [
@@ -52,7 +52,7 @@ const Navbar = () => {
             aria-label="Toggle theme"
             className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-colors hover:bg-surface hover:text-text-primary"
           >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            {theme === "dark" ? <LuSun size={16} /> : <LuMoon size={16} />}
           </button>
 
           {/* Hamburger — mobile only */}
@@ -61,7 +61,7 @@ const Navbar = () => {
             aria-label="Toggle menu"
             className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-colors hover:bg-surface hover:text-text-primary md:hidden"
           >
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            {menuOpen ? <LuX size={18} /> : <LuMenu size={18} />}
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
-import { ChevronLeft } from "lucide-react"
+import { LuChevronLeft } from "react-icons/lu"
 import { motion } from "framer-motion"
 import { useRaidStaticData } from "@/hooks/useRaidStaticData"
 import { REGIONS, EXPANSIONS, DIFFICULTIES } from "@/data/game"
@@ -76,7 +76,7 @@ const BossRankingsPage = () => {
           to="/raid"
           className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
         >
-          <ChevronLeft size={15} />
+          <LuChevronLeft size={15} />
           Raiding
         </Link>
 

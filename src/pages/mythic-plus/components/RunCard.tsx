@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { LuChevronDown } from "react-icons/lu"
 import type { MythicRunRanking } from "@/types/raiderio/mythic-plus"
 import RunHeader from "./RunHeader"
 import RunModifiers from "./RunModifiers"
@@ -31,7 +31,7 @@ const RunCard = ({ ranking }: RunCardProps) => {
             completedAt={run.completed_at}
           />
         </div>
-        <ChevronDown
+        <LuChevronDown
           size={16}
           className={`mt-1 shrink-0 text-text-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />

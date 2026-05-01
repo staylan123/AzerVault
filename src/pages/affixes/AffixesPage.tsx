@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { ChevronLeft } from "lucide-react"
+import { LuChevronLeft } from "react-icons/lu"
 import { motion } from "framer-motion"
 import { useAffixes } from "@/hooks/useAffixes"
 import AffixList from "./components/AffixList"
@@ -30,7 +30,7 @@ const AffixesPage = () => {
           to="/mythic-plus"
           className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
         >
-          <ChevronLeft size={15} />
+          <LuChevronLeft size={15} />
           Mythic+
         </Link>
 

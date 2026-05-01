@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom"
-import { Zap, Timer } from "lucide-react"
+import { LuZap, LuTimer } from "react-icons/lu"
 
 const CARDS = [
   {
     to: "/mythic-plus/affixes",
-    icon: Zap,
+    icon: LuZap,
     title: "Affixes",
     description: "See this week's Mythic+ affixes by region and locale.",
   },
   {
     to: "/mythic-plus/runs",
-    icon: Timer,
+    icon: LuTimer,
     title: "Runs",
     description: "Browse recent Mythic+ runs and leaderboard data.",
   },

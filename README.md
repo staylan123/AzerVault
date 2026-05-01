@@ -46,7 +46,6 @@ AzerVault lets you pull live World of Warcraft data directly from the Raider.IO 
 - Tailwind CSS v4
 - React Router DOM v7
 - Framer Motion
-- Lucide React
 - React Icons
 
 ---

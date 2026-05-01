@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom"
-import { Trophy, Swords, BarChart2 } from "lucide-react"
+import { LuTrophy, LuSwords, LuBarChart2 } from "react-icons/lu"
 
 const CARDS = [
   {
     to: "/raid/hall-of-fame",
-    icon: Trophy,
+    icon: LuTrophy,
     title: "Hall of Fame",
     description: "Browse world, region, and realm rankings for mythic raid clears.",
   },
   {
     to: "/raid/boss-rankings",
-    icon: Swords,
+    icon: LuSwords,
     title: "Boss Rankings",
     description: "See which guilds rank highest for a specific boss kill.",
   },
   {
     to: "/raid/raid-rankings",
-    icon: BarChart2,
+    icon: LuBarChart2,
     title: "Raid Rankings",
     description: "Compare guild standings across an entire raid tier by difficulty and region.",
   },

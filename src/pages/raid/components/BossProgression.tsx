@@ -1,4 +1,4 @@
-import { Play } from "lucide-react"
+import { LuPlay } from "react-icons/lu"
 import type { BossKill } from "@/types/raiderio/raiding"
 import { formatDate } from "@/utils/date"
 
@@ -82,7 +82,7 @@ const BossProgression = ({ bossKills }: Props) => {
                               rel="noopener noreferrer"
                               className="flex items-center gap-1 text-primary transition-colors hover:text-primary-hover"
                             >
-                              <Play size={13} className="fill-current" />
+                              <LuPlay size={13} className="fill-current" />
                               <span className="text-xs">Watch</span>
                             </a>
                           )}

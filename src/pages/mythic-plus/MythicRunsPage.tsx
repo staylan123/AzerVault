@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
+import { LuChevronLeft, LuChevronRight, LuExternalLink } from "react-icons/lu"
 import { motion } from "framer-motion"
 import { useMythicPlusStaticData } from "@/hooks/useMythicPlusStaticData"
 import { useMythicPlusRuns } from "@/hooks/useMythicPlusRuns"
@@ -86,7 +86,7 @@ const MythicRunsPage = () => {
         to="/mythic-plus"
         className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
       >
-        <ChevronLeft size={15} />
+        <LuChevronLeft size={15} />
         Mythic+
       </Link>
 
@@ -189,7 +189,7 @@ const MythicRunsPage = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs text-text-muted transition-colors hover:text-text-primary"
             >
-              <ExternalLink size={12} />
+              <LuExternalLink size={12} />
               Raider.io
             </a>
           </div>
@@ -210,7 +210,7 @@ const MythicRunsPage = () => {
               disabled={page === 0 || runsLoading}
               className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface px-4 py-2 text-sm text-text-secondary transition-colors hover:border-primary/40 hover:text-text-primary disabled:cursor-not-allowed disabled:opacity-40"
             >
-              <ChevronLeft size={15} />
+              <LuChevronLeft size={15} />
               Prev
             </button>
             <span className="text-sm text-text-muted">Page {page + 1}</span>
@@ -220,7 +220,7 @@ const MythicRunsPage = () => {
               className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface px-4 py-2 text-sm text-text-secondary transition-colors hover:border-primary/40 hover:text-text-primary disabled:cursor-not-allowed disabled:opacity-40"
             >
               Next
-              <ChevronRight size={15} />
+              <LuChevronRight size={15} />
             </button>
           </div>
         </motion.div>
