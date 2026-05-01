@@ -40,11 +40,16 @@ const About = () => (
           <h1 className="text-3xl font-bold text-text-primary">About AzerVault</h1>
           <p className="mt-4 leading-relaxed text-text-secondary">
             AzerVault is a lightweight World of Warcraft companion tool for quickly looking up
-            character profiles, guild rosters, raid progression, and this week's Mythic+ affixes —
+            character profiles, guild rosters, raid progression, Mythic+ runs, and more —
             all without navigating away from a clean interface.
           </p>
           <p className="mt-3 leading-relaxed text-text-secondary">
-            Data is fetched live from the{" "}
+            Features include character and guild profiles, raid Hall of Fame, boss and raid
+            rankings, this week's Mythic+ affixes, and top Mythic+ run leaderboards by season,
+            dungeon, and region.
+          </p>
+          <p className="mt-3 leading-relaxed text-text-secondary">
+            All data is fetched live from the{" "}
             <a
               href="https://raider.io/api"
               target="_blank"
