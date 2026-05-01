@@ -6,46 +6,47 @@
 
 ## What is AzerVault?
 
-AzerVault lets you pull live World of Warcraft data directly from the Raider.IO API. Whether you want to inspect a character's Mythic+ score, track guild progression, or browse raid rankings — it's all here.
+AzerVault lets you pull live World of Warcraft data directly from the Raider.IO API. Look up character profiles, browse guild rosters, track raid progression, explore Mythic+ runs, and more — all in a clean, fast interface.
 
 ---
 
-## Data Available
+## Features
 
-### Player Data
-- Character profile (name, realm, class, spec, race, faction)
-- Mythic+ Raider.IO score (overall, DPS, healer, tank)
+### Characters
+- Profile (name, realm, class, spec, race, faction)
+- Mythic+ Raider.IO score — overall, DPS, healer, and tank breakdowns
 - Current and previous season scores
-- Best Mythic+ runs per dungeon
+- Best, recent, and alternate Mythic+ runs
 - Raid progression summary
-- Gear / equipped item level
+- Equipped gear with item level, quality, gems, and enchants
+- Talent build with active hero tree and key talents
 
-### Guild Data
-- Guild profile (name, realm, faction)
-- Current raid tier progression (Normal / Heroic / Mythic)
+### Guilds
+- Profile (name, realm, faction)
+- Current raid tier progression across Normal / Heroic / Mythic
 - World, region, and realm rankings
-- Recent raid activity
+- Guild member roster
 
-### Mythic+ Data
-- Weekly affixes
-- Dungeon leaderboards by realm, region, or world
-- Best timed runs with key level and completion time
-- Score breakdowns per season and role
+### Mythic+
+- Weekly affixes by region and locale
+- Top runs leaderboard by season, dungeon, and region with pagination
+- Run details — key level, clear time, weekly modifiers, and full roster with class colors and role
 
-### Raid Data
-- Boss-by-boss kill tracking across difficulties
-- World / region / realm progression rankings
-- Historical tier progression
+### Raiding
+- Hall of Fame — guilds that fully cleared a raid tier with boss-by-boss first-kill breakdown
+- Boss Rankings — fastest kills on a specific boss by difficulty and region
+- Raid Rankings — overall guild standings across an entire raid tier
 
 ---
 
 ## Stack
-- React
+- React 19
 - TypeScript
 - Vite
-- ShadCN
-- TailwindCSS
-- React Router DOM
+- Tailwind CSS v4
+- React Router DOM v7
+- Framer Motion
+- Lucide React
 - React Icons
 
 ---
@@ -56,5 +57,5 @@ AzerVault lets you pull live World of Warcraft data directly from the Raider.IO 
 
 ---
 
-> **Note:** This is just a fun personal project and is not intended for large-scale use.
-> All data is sourced from [Raider.IO](https://raider.io/) — huge credit to their team for making this API available. This project wouldn't exist without them.
+> **Note:** This is a personal project and is not intended for large-scale use.
+> All data is sourced from [Raider.IO](https://raider.io/) — huge credit to their team for making this API publicly available.

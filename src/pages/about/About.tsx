@@ -1,12 +1,16 @@
 
 import { motion } from "framer-motion"
-import { SiReact, SiTypescript, SiTailwindcss, SiVite } from "react-icons/si"
+import { SiReact, SiTypescript, SiTailwindcss, SiVite, SiReactrouter } from "react-icons/si"
+import { Wind, Shapes } from "lucide-react"
 
 const TECH = [
-  { icon: SiReact, label: "React" },
+  { icon: SiReact, label: "React 19" },
   { icon: SiTypescript, label: "TypeScript" },
   { icon: SiTailwindcss, label: "Tailwind CSS" },
   { icon: SiVite, label: "Vite" },
+  { icon: SiReactrouter, label: "React Router" },
+  { icon: Wind, label: "Framer Motion" },
+  { icon: Shapes, label: "Lucide React" },
 ]
 
 const LINKS = [
