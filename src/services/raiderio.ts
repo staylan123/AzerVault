@@ -4,6 +4,7 @@ import type { CharacterProfile } from "@/types/raiderio/character"
 import type { AffixesResponse } from "@/types/raiderio/affixes"
 import type { GuildProfile } from "@/types/raiderio/guild"
 import type { RaidStaticData, HallOfFameResponse, BossRankingsResponse, RaidRankingsResponse } from "@/types/raiderio/raiding"
+import type { MythicPlusStaticData, MythicPlusRunsResponse } from "@/types/raiderio/mythic-plus"
 
 const BASE = "https://raider.io/api/v1"
 
@@ -115,6 +116,34 @@ export const fetchRaidRankings = async (
     throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
   }
   return res.json() as Promise<RaidRankingsResponse>
+}
+
+export const fetchMythicPlusStaticData = async (
+  expansionId: number,
+): Promise<MythicPlusStaticData> => {
+  const url = `${BASE}/mythic-plus/static-data?expansion_id=${expansionId}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
+  }
+  return res.json() as Promise<MythicPlusStaticData>
+}
+
+export const fetchMythicPlusRuns = async (
+  season: string,
+  region: string,
+  dungeon: string,
+  page: number,
+): Promise<MythicPlusRunsResponse> => {
+  const params = new URLSearchParams({ season, region, dungeon, page: String(page) })
+  const url = `${BASE}/mythic-plus/runs?${params}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error((body as { message?: string }).message ?? `HTTP ${res.status}`)
+  }
+  return res.json() as Promise<MythicPlusRunsResponse>
 }
 
 export const fetchCharacterProfile = async (
