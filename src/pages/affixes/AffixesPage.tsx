@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { ChevronLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { useAffixes } from "@/hooks/useAffixes"
 import Navbar from "@/components/navbar/Navbar"
@@ -31,6 +33,14 @@ const AffixesPage = () => {
       <Navbar />
 
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 pb-12 pt-24">
+        <Link
+          to="/mythic-plus"
+          className="mb-6 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-primary"
+        >
+          <ChevronLeft size={15} />
+          Mythic+
+        </Link>
+
         <form onSubmit={handleSubmit} className="flex flex-wrap items-end gap-3">
           <div className="flex flex-col gap-1.5">
             <label className="text-xs uppercase tracking-widest text-text-muted">Region</label>

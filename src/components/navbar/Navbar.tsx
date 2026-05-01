@@ -7,7 +7,7 @@ import { useTheme } from "@/context/ThemeContext"
 const NAV_LINKS = [
   { to: "/character", label: "Character Lookup" },
   { to: "/guild", label: "Guild Lookup" },
-  { to: "/affixes", label: "Affixes" },
+  { to: "/mythic-plus", label: "Mythic+" },
   { to: "/raid", label: "Raids" },
   { to: "/about", label: "About" },
 ]
